@@ -1,0 +1,70 @@
+name: Test phython env in github
+on:
+  push:
+    branches: [ "master" ]
+#      - '**'
+#    tags:
+#      - '!**'
+  pull_request:
+    branches: [ "master" ] 
+#      - '**'
+  workflow_dispatch:
+  
+jobs:
+  detect-secrets:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: Set python env
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.x'
+      
+    - name: Install git-secret packages
+      run: |
+        sudo apt-get update
+        echo "inside install section"
+        python --version
+        sudo apt-get install python3-pip
+        echo -e "\n---------"
+        which pip3
+        echo -e "\n---------"
+        pip3 install pre-commit
+        echo "repos:
+            - repo: https://github.com/Yelp/detect-secrets
+              rev: v1.3.0
+              hooks:
+              - id: detect-secrets" > .pre-commit-config.yaml
+        echo "### pre-commit-config.yaml data"
+        cat .pre-commit-config.yaml
+      
+        pre-commit install
+        pre-commit install --hook-type pre-push
+      
+        git config --global user.email "ubasa2014@gmail.com"
+        git config --global user.name "ubasa"
+        
+    - name: checking hook files
+      run: |
+        ls -ltr .git/hooks/|grep -v sample
+      # cat .git/hooks/pre-push
+        ls -ltr .git/hooks/
+        
+#    - name: checking secret files
+#      run: |
+#        ls -ltr;cat abc;echo -e "\n"
+#        #sed -i '/new_password/d' abc;
+#        echo "#new_password = "AKIAHGGHDJFKGLGMFNJXM"" >>abc
+#        cat abc
+#        echo -e "\n ---------- \n"
+        
+  
+#    - name: using hooks
+#      run: |
+#        git branch;git status;git diff
+#        git add .
+#        git commit -m"adding inside action"
+#        git push -u origin master      
