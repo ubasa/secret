@@ -47,13 +47,14 @@ jobs:
         git config --global user.email "ubasa2014@gmail.com"
         git config --global user.name "ubasa"
         
-    - name: checking hook files
-      run: |
-        ls -ltr .git/hooks/|grep -v sample
-        ls -ltr .git/hooks/
-        
-#    - name: checking secret files
+#    - name: checking hook files
 #      run: |
+#        ls -ltr .git/hooks/|grep -v sample
+#        ls -ltr .git/hooks/
+        
+    - name: checking secret files
+      run: |
+         git log --pretty=oneline
 #        ls -ltr;cat abc;echo -e "\n"
 #        #sed -i '/new_password/d' abc;
 #        echo "#new_password = "AKIAHGGHDJFKGLGMFNJXM"" >>abc
