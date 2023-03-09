@@ -50,7 +50,7 @@ jobs:
     - name: checking hook files
       run: |
         ls -ltr .git/hooks/|grep -v sample
-      # cat .git/hooks/pre-push
+#       cat .git/hooks/pre-push
         ls -ltr .git/hooks/
         
 #    - name: checking secret files
