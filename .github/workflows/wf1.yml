@@ -55,6 +55,7 @@ jobs:
     - name: checking secret files
       run: |
          git log --pretty=oneline
+         git diff
 #        ls -ltr;cat abc;echo -e "\n"
 #        #sed -i '/new_password/d' abc;
 #        echo "#new_password = "AKIAHGGHDJFKGLGMFNJXM"" >>abc
