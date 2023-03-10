@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: detect-secrets
-      uses: reviewdog/action-detect-secrets@master
-      with:
-        reporter: github-pr-review # Change reporter.
+#    - name: detect-secrets
+#      uses: reviewdog/action-detect-secrets@master
+#      with:
+#        reporter: github-pr-review # Change reporter.
+    
+    - name: "Execute cmd 1"
+      id: sample-1
+      run: echo "Hello World"
+    - name: "Execute cmd 2"
+      id: sample-2
+      run: apt update
