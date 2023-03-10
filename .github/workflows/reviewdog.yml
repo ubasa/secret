@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      run: |
+        touch .trufflehogignore
     - uses: UnicornGlobal/trufflehog-actions-scan@master
       with:
         branch: ${{ github.head_ref }}
