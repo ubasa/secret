@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        touch .trufflehogignore
+        touch .truffleignore
     - uses: UnicornGlobal/trufflehog-actions-scan@master
       with:
         branch: ${{ github.head_ref }}
