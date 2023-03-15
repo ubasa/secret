@@ -1,5 +1,14 @@
 name: CI
-on: [pull_request, push]
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+    branches: [main, master]
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths-ignore: [.github/workflows/*]
+
+#on: [pull_request, push]
 jobs:
   TruffleHog:
     runs-on: ubuntu-latest
