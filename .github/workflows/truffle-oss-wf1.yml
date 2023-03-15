@@ -31,3 +31,4 @@ jobs:
           echo "${{ HEAD }}
           echo "${{ head }}
           echo ${{ github.event.repository.*.* }}
+          date
