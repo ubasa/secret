@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main, master]
-    paths-ignore: [.github/workflows/*]
+#    paths-ignore: [.github/workflows/*]
 
 #on: [pull_request, push]
 jobs:
@@ -28,3 +28,7 @@ jobs:
       - name: env-vars
         run: |
           echo "${{ github.event.repository.default_branch }}"
+          echo "${{ github.event.repository.HEAD }}
+          echo "${{ github.event.repository.head }}
+          echo ${{ github.event.repository.*.* }}
+          date
